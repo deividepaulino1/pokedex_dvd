@@ -26,7 +26,9 @@ class _MainPageState extends State<MainPage> {
             currentIndex: currentIndex.value,
             onTap: (i) {
               currentIndex.value = i;
-              pageController.jumpToPage(i);
+              pageController.animateToPage(i,
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.easeInOut);
             },
           ),
         ),
