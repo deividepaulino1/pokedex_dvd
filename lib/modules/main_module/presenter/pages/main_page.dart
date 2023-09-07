@@ -5,6 +5,7 @@ import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/atoms/botto
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/pokedex_bottom_bar.dart';
 import 'package:pokedex_dvd/modules/favourites_module/presenter/pages/favorites_page.dart';
 import 'package:pokedex_dvd/modules/home_module/presenter/pages/home_page.dart';
+import 'package:pokedex_dvd/modules/profile_module/presenter/pages/profile_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -38,6 +39,7 @@ class _MainPageState extends State<MainPage> {
           children: const [
             HomePage(),
             FavoritesPage(),
+            ProfilePage(),
           ],
         ));
   }

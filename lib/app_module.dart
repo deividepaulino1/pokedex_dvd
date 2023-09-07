@@ -1,5 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pokedex_dvd/modules/favourites_module/home_module.dart';
+import 'package:pokedex_dvd/modules/home_module/home_module.dart';
 import 'package:pokedex_dvd/modules/main_module/main_module.dart';
+import 'package:pokedex_dvd/modules/profile_module/profile_module.dart';
 import 'package:pokedex_dvd/modules/splash_module/splash_module.dart';
 
 class AppModule extends Module {
@@ -9,9 +12,7 @@ class AppModule extends Module {
       ];
 
   @override
-  List<Bind> get binds => [
-        // Bind((i) => DjScaffoldMessage()),
-      ];
+  List<Bind> get binds => [];
 
   @override
   List<ModularRoute> get routes => [
@@ -22,6 +23,18 @@ class AppModule extends Module {
         ModuleRoute(
           '/main/',
           module: MainModule(),
+        ),
+        ModuleRoute(
+          '/home/',
+          module: HomeModule(),
+        ),
+        ModuleRoute(
+          '/favorites/',
+          module: FavoritesModule(),
+        ),
+        ModuleRoute(
+          '/profile/',
+          module: ProfileModule(),
         ),
       ];
 }
