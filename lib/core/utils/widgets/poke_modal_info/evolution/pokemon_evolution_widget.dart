@@ -38,7 +38,13 @@ class _PokemonEvolutionWidgetState extends State<PokemonEvolutionWidget> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    Text('Bubassaur $index'),
+                    Text(
+                      'Bubassaur #$index',
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     const PokeTypeWidget(type: 'grass'),
                   ],

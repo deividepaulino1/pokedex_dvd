@@ -7,6 +7,7 @@ import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/atoms/botto
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/pokedex_bottom_bar.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/about/about_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/evolution/pokemon_evolution_widget.dart';
+import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/moves/pokemon_moves_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/stats/pokemon_stats_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_type_widget/poke_type_widget.dart';
 
@@ -180,8 +181,8 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
             child: PokemonEvolutionWidget(),
           ),
           Container(
-            color: Colors.green,
-            child: Text('Moves Content'),
+            color: Colors.white,
+            child: PokemonMovesWidget(),
           ),
         ],
       ),
