@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pokedex_dvd/modules/home_module/home_module.dart';
+import 'package:pokedex_dvd/modules/main_module/main_module.dart';
 import 'package:pokedex_dvd/modules/splash_module/splash_module.dart';
 
 class AppModule extends Module {
@@ -20,8 +20,8 @@ class AppModule extends Module {
           module: SplashModule(),
         ),
         ModuleRoute(
-          '/home/',
-          module: HomeModule(),
+          '/main/',
+          module: MainModule(),
         ),
       ];
 }
