@@ -1,6 +1,9 @@
+import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex_dvd/core/utils/widgets/app_bar/pokedex_app_bar_widget.dart';
+import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/atoms/bottom_navigation_bar_atom.dart';
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/pokedex_bottom_bar.dart';
+import 'package:pokedex_dvd/core/utils/widgets/poke_card_widget/poke_card_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,9 +18,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PokedexCustomAppBar(),
-      bottomNavigationBar: PokedexNavigationBar(
-        currentIndex: 1,
-        onTap: (v) {},
+      bottomNavigationBar: RxBuilder(
+        builder: (_) => PokedexNavigationBar(
+          currentIndex: currentIndex.value,
+          onTap: (i) => {
+            currentIndex.setValue(i),
+          },
+        ),
       ),
       body: Column(
         children: [
@@ -29,8 +36,13 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-            height: 500,
-            color: Colors.red,
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: ListView.builder(
+              itemCount: 1,
+              itemBuilder: (context, index) {
+                return const PokeCardWidget();
+              },
+            ),
           ),
         ],
       ),

@@ -43,12 +43,12 @@ class ThemeBase {
         titleLarge: const TextStyle(
           fontFamily: 'Roboto',
           color: Colors.black,
-          fontSize: 32,
+          fontSize: 30,
           fontWeight: FontWeight.bold,
         ),
         bodyLarge: const TextStyle(
           color: Colors.black,
-          fontSize: 14,
+          fontSize: 26,
         ),
         bodyMedium: const TextStyle(
           color: Colors.black,

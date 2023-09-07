@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pokedex_dvd/core/assets/icons/pokedex/pokedex_icons.dart';
+import 'package:pokedex_dvd/core/theme/colors/colors.dart';
 
 class PokedexNavigationBar extends StatelessWidget {
   final int currentIndex;
@@ -33,9 +34,14 @@ class PokedexNavigationBar extends StatelessWidget {
         ),
       ],
       onTap: onTap,
-      selectedItemColor: Colors.red, // Cor do ícone ativo
-      unselectedItemColor: Colors.black, // Cor do ícone inativo
-      backgroundColor: Colors.white, // Cor de fundo da barra
+      selectedItemColor: PokedexColors.hotRed,
+      selectedIconTheme: const IconThemeData(
+        size: 26,
+      ),
+      selectedFontSize: 13,
+      unselectedFontSize: 12,
+      unselectedItemColor: PokedexColors.customBD,
+      backgroundColor: Colors.white,
     );
   }
 }
