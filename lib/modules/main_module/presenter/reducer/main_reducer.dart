@@ -15,20 +15,22 @@ class MainReducer extends Reducer {
 
   final pokemonService = Modular.get<PokemonService>();
 
+  //Nao achei endpoint pra buscar lista na api que estou consumido, por isso fiz
+  //essa "workaround" vulgo gambiarra
+  // hehe
+
   void _fetchPokemons() async {
     pokemonAtom.mainState.setValue(const MainLoadingState());
     pokemonAtom.pokemonList.value.clear();
-    final data = await pokemonService.fetchPokemonGenInfo('1');
-    pokemonAtom.pokemonList.value.add(data);
 
-    final data2 = await pokemonService.fetchPokemonGenInfo('4');
-    pokemonAtom.pokemonList.value.add(data2);
-
-    final data3 = await pokemonService.fetchPokemonGenInfo('7');
-    pokemonAtom.pokemonList.value.add(data3);
-
-    final data4 = await pokemonService.fetchPokemonGenInfo('10');
-    pokemonAtom.pokemonList.value.add(data4);
+    for (var i = 1; i <= 151; i += 3) {
+      try {
+        final response = await pokemonService.fetchPokemonGenInfo('$i');
+        pokemonAtom.pokemonList.value.add(response);
+      } catch (e) {
+        d.log('Pokemon sem dados: $e');
+      }
+    }
 
     if (pokemonAtom.pokemonList.value.isNotEmpty) {
       pokemonAtom.mainState.setValue(const MainSuccessState());

@@ -40,7 +40,7 @@ class PokemonInfo {
     if (json['abilities'] != null) {
       abilities = <Abilities>[];
       json['abilities'].forEach((v) {
-        abilities!.add(new Abilities.fromJson(v));
+        abilities!.add(Abilities.fromJson(v));
       });
     }
     baseExperience = json['base_experience'];
@@ -48,7 +48,7 @@ class PokemonInfo {
     if (json['game_indices'] != null) {
       gameIndices = <GameIndices>[];
       json['game_indices'].forEach((v) {
-        gameIndices!.add(new GameIndices.fromJson(v));
+        gameIndices!.add(GameIndices.fromJson(v));
       });
     }
     height = json['height'];
