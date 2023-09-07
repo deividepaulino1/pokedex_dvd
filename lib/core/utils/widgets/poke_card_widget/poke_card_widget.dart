@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/poke_modal_info.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_type_widget/poke_type_widget.dart';
 
 class PokeCardWidget extends StatefulWidget {
@@ -31,7 +32,7 @@ class _PokeCardWidgetState extends State<PokeCardWidget>
           context: context,
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
-          builder: (context) => Container(),
+          builder: (context) => PokeModalInfoWidget(),
         ),
       },
       child: Container(

@@ -67,8 +67,8 @@ class PokedexColors {
       Color.fromARGB(255, 32, 197, 245),
       Color.fromARGB(255, 21, 124, 154),
     ],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
   );
 
   static LinearGradient fireGradient = const LinearGradient(
@@ -76,8 +76,8 @@ class PokedexColors {
       Color.fromARGB(255, 248, 168, 1),
       Color.fromARGB(255, 236, 140, 76),
     ],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
   );
 
   static LinearGradient grassGradient = const LinearGradient(
@@ -85,7 +85,7 @@ class PokedexColors {
       Color.fromARGB(255, 112, 208, 144),
       Color.fromARGB(255, 85, 162, 58),
     ],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
   );
 }
