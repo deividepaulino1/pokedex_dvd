@@ -108,7 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Padding(
                 padding: const EdgeInsets.only(left: 5.0),
                 child: Text(
-                  'Protótipo realizado para fins de estudos de interface e implementação para a Garaní Sistemas',
+                  'Protótipo realizado para fins de estudos de Sistemas',
                   style: Theme.of(context).textTheme.displayMedium!.copyWith(
                         fontSize: 12,
                       ),
