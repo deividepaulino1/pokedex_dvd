@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -8,6 +9,12 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final List<String> _svgAssets = [
+    'lib/core/assets/svg/profile/github.svg',
+    'lib/core/assets/svg/profile/linkedin.svg',
+    'lib/core/assets/svg/profile/whats.svg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -113,11 +120,16 @@ class _ProfilePageState extends State<ProfilePage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(
-              3,
-              (index) => GestureDetector(
-                    onTap: () {},
-                    child: const CircleAvatar(),
-                  )),
+            3,
+            (index) => InkWell(
+              onTap: () {},
+              child: SvgPicture.asset(
+                _svgAssets[index],
+                height: 35,
+                width: 35,
+              ),
+            ),
+          ),
         ),
       ],
     );

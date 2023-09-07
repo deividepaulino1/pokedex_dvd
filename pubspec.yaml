@@ -33,6 +33,7 @@ flutter:
     - lib/core/assets/svg/
     - lib/core/assets/svg/categories/
     - lib/core/assets/svg/stats/
+    - lib/core/assets/svg/profile/
 
   fonts:
     - family: Pokedex
