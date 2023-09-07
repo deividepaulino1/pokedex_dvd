@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pokedex_dvd/core/theme/colors/colors.dart';
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/atoms/bottom_navigation_bar_atom.dart';
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/pokedex_bottom_bar.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/about/about_widget.dart';
+import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/evolution/pokemon_evolution_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/stats/pokemon_stats_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_type_widget/poke_type_widget.dart';
 
@@ -176,8 +176,8 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
             child: PokemonStatsWidget(),
           ),
           Container(
-            color: Colors.yellow,
-            child: Text('Evolution Content'),
+            color: Colors.white,
+            child: PokemonEvolutionWidget(),
           ),
           Container(
             color: Colors.green,
