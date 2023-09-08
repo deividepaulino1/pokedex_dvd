@@ -5,12 +5,14 @@ import 'package:lottie/lottie.dart';
 import 'package:pokedex_dvd/core/theme/colors/colors.dart';
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/atoms/bottom_navigation_bar_atom.dart';
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/pokedex_bottom_bar.dart';
+import 'package:pokedex_dvd/core/utils/widgets/notification_ballon/notification_ballon_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/about/about_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/evolution/pokemon_evolution_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/moves/pokemon_moves_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/stats/pokemon_stats_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_type_widget/poke_type_widget.dart';
 import 'package:pokedex_dvd/modules/main_module/models/pokemon_model.dart';
+import 'package:pokedex_dvd/modules/main_module/presenter/atoms/main_atoms.dart';
 
 class PokeModalInfoWidget extends StatefulWidget {
   final PokemonInfo pokemonInfo;
@@ -25,12 +27,17 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
   late AnimationController likeController;
   late TabController _tabController;
 
+  final mainAtom = Modular.get<MainAtoms>();
+
   @override
   void initState() {
     likeController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 3000));
-    // ..forward()
-    // ..repeat();
+    if (mainAtom.likedList.value.contains(widget.pokemonInfo)) {
+      likeController.value = 0.5;
+    } else {
+      likeController.value = 0;
+    }
     _tabController = TabController(length: 4, vsync: this);
     super.initState();
   }
@@ -125,16 +132,36 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Lottie.asset(
-                    'lib/core/assets/animations/like_pokemao.json',
-                    controller: likeController,
-                    height: 50,
-                    width: 50,
-                    onLoaded: (composition) {
-                      likeController
-                        ..duration = composition.duration
-                        ..forward();
+                  InkWell(
+                    onTap: () => {
+                      if (mainAtom.likedList.value.contains(widget.pokemonInfo))
+                        {
+                          mainAtom.likedList.value.remove(widget.pokemonInfo),
+                          likeController.animateTo(0),
+                          CustomSnackbar.show(
+                            context: context,
+                            message:
+                                '${widget.pokemonInfo.name![0].toUpperCase() + widget.pokemonInfo.name!.substring(1)} deixou de ser queridinho :(',
+                            icon: Icons.heart_broken,
+                          ),
+                        }
+                      else
+                        {
+                          mainAtom.likedList.value.add(widget.pokemonInfo),
+                          likeController.animateTo(0.5),
+                          CustomSnackbar.show(
+                            context: context,
+                            message: 'Pokémon adicionado aos favoritos',
+                            icon: Icons.favorite,
+                          ),
+                        },
                     },
+                    child: Lottie.asset(
+                      'lib/core/assets/animations/like_pokemao.json',
+                      controller: likeController,
+                      height: 50,
+                      width: 50,
+                    ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
