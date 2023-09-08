@@ -178,17 +178,23 @@ class _PokeCardWidgetState extends State<PokeCardWidget>
                     {
                       mainAtom.myFavs.value.remove(widget.name),
                       likeController.animateTo(0),
+                      CustomSnackbar.show(
+                        context: context,
+                        message:
+                            '${widget.name[0].toUpperCase() + widget.name.substring(1)} deixou de ser queridinho :(',
+                        icon: Icons.heart_broken,
+                      ),
                     }
                   else
                     {
                       mainAtom.myFavs.value.add(widget.name),
                       likeController.animateTo(0.5),
+                      CustomSnackbar.show(
+                        context: context,
+                        message: 'Pokémon adicionado aos favoritos',
+                        icon: Icons.favorite,
+                      ),
                     },
-                  CustomSnackbar.show(
-                    context: context,
-                    message: 'Pokémon adicionado aos favoritos',
-                    icon: Icons.favorite,
-                  ),
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 1, top: 1),
