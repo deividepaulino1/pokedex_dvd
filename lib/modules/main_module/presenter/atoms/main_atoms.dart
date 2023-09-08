@@ -6,6 +6,8 @@ class MainAtoms {
   final mainState = Atom<MainState>(const MainLoadingState());
   final pokemonList = Atom<List<PokemonInfo>>([]);
 
+  final myFavs = Atom<List<String>>([]);
+
 //actions
   final fetchPokemonListAction = Atom.action();
 

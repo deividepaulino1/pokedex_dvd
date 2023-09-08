@@ -22,7 +22,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 40),
           child: Text(
-            'Qual Pokémon você está procurando?',
+            'Meus Pokémons favoritos',
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),

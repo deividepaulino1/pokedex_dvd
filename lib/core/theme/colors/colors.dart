@@ -53,15 +53,6 @@ class PokedexColors {
 
   //degrade colors
 
-  static LinearGradient electricGradient = const LinearGradient(
-    colors: [
-      Color.fromARGB(255, 252, 244, 124),
-      Color.fromARGB(255, 188, 137, 5),
-    ],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
-
   static LinearGradient waterGradient = const LinearGradient(
     colors: [
       Color.fromARGB(255, 32, 197, 245),
@@ -87,5 +78,86 @@ class PokedexColors {
     ],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
+  );
+
+  static LinearGradient darkGradient = const LinearGradient(
+    colors: [
+      Color.fromARGB(255, 165, 165, 165),
+      Color.fromARGB(255, 129, 129, 129),
+    ],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
+
+  static LinearGradient electricGradient = const LinearGradient(
+    colors: [
+      Color.fromARGB(255, 252, 244, 124),
+      Color.fromARGB(255, 188, 137, 5),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static LinearGradient fairyGradient = const LinearGradient(
+    colors: [
+      Color.fromARGB(255, 252, 124, 250),
+      Color.fromARGB(255, 185, 5, 188),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static LinearGradient figthinGradient = const LinearGradient(
+    colors: [
+      Color.fromARGB(255, 252, 124, 124),
+      Color.fromARGB(255, 188, 5, 5),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static LinearGradient flyingGradient = const LinearGradient(
+    colors: [
+      Color.fromARGB(255, 124, 235, 252),
+      Color.fromARGB(255, 5, 182, 188),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static LinearGradient ghostGradient = const LinearGradient(
+    colors: [
+      Color.fromARGB(255, 162, 124, 252),
+      Color.fromARGB(255, 48, 5, 188),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static LinearGradient groundGradient = const LinearGradient(
+    colors: [
+      Color.fromARGB(255, 252, 164, 124),
+      Color.fromARGB(255, 136, 80, 24),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static LinearGradient poisonGradient = const LinearGradient(
+    colors: [
+      Color.fromARGB(255, 214, 124, 252),
+      Color.fromARGB(255, 124, 5, 188),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static LinearGradient dragonGradient = const LinearGradient(
+    colors: [
+      Color.fromARGB(255, 130, 124, 252),
+      Color.fromARGB(255, 5, 11, 188),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
   );
 }

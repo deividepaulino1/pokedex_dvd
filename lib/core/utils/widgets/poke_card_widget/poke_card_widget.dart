@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pokedex_dvd/core/theme/colors/colors.dart';
+import 'package:pokedex_dvd/core/utils/widgets/notification_ballon/notification_ballon_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/poke_modal_info.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_type_widget/poke_type_widget.dart';
 import 'package:pokedex_dvd/modules/main_module/models/pokemon_model.dart';
+import 'package:pokedex_dvd/modules/main_module/presenter/atoms/main_atoms.dart';
 
 class PokeCardWidget extends StatefulWidget {
   final String imageLink;
@@ -30,12 +33,17 @@ class _PokeCardWidgetState extends State<PokeCardWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController likeController;
 
+  final mainAtom = Modular.get<MainAtoms>();
+
   @override
   void initState() {
     likeController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 3000));
-    // ..forward()
-    // ..repeat();
+    if (mainAtom.myFavs.value.contains(widget.name)) {
+      likeController.value = 0.5;
+    } else {
+      likeController.value = 0;
+    }
     super.initState();
   }
 
@@ -166,7 +174,21 @@ class _PokeCardWidgetState extends State<PokeCardWidget>
               ),
               InkWell(
                 onTap: () => {
-                  likeController.animateTo(0.5),
+                  if (mainAtom.myFavs.value.contains(widget.name))
+                    {
+                      mainAtom.myFavs.value.remove(widget.name),
+                      likeController.animateTo(0),
+                    }
+                  else
+                    {
+                      mainAtom.myFavs.value.add(widget.name),
+                      likeController.animateTo(0.5),
+                    },
+                  CustomSnackbar.show(
+                    context: context,
+                    message: 'Pokémon adicionado aos favoritos',
+                    icon: Icons.favorite,
+                  ),
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 1, top: 1),

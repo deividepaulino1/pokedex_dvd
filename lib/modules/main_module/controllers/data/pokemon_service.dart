@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pokedex_dvd/core/utils/api/api_url.dart';
 import 'package:pokedex_dvd/modules/main_module/models/pokemon_gen.dart';
-import 'dart:developer' as d;
-
 import 'package:pokedex_dvd/modules/main_module/models/pokemon_model.dart';
 
 class PokemonService {

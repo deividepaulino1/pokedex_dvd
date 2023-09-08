@@ -60,6 +60,50 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
     );
   }
 
+  _setGradient(String type) {
+    switch (type) {
+      case 'bug':
+        return PokedexColors.grassGradient;
+      case 'dark':
+        return PokedexColors.darkGradient;
+      case 'electric':
+        return PokedexColors.electricGradient;
+      case 'fairy':
+        return PokedexColors.fairyGradient;
+      case 'fighting':
+        return PokedexColors.figthinGradient;
+      case 'flying':
+        return PokedexColors.flyingGradient;
+      case 'ghost':
+        return PokedexColors.ghostGradient;
+      case 'grass':
+        return PokedexColors.grassGradient;
+      case 'ground':
+        return PokedexColors.groundGradient;
+      case 'ice':
+        return PokedexColors.flyingGradient;
+      case 'poison':
+        return PokedexColors.poisonGradient;
+      case 'psychic':
+        return PokedexColors.fairyGradient;
+      case 'rock':
+        return PokedexColors.groundGradient;
+      case 'steel':
+        return PokedexColors.darkGradient;
+      case 'water':
+        return PokedexColors.waterGradient;
+      case 'fire':
+        return PokedexColors.fireGradient;
+      case 'dragon':
+        return PokedexColors.dragonGradient;
+      case 'normal':
+        return PokedexColors.darkGradient;
+
+      default:
+        return PokedexColors.darkGradient;
+    }
+  }
+
   Widget _buildHeader() {
     return Stack(
       children: [
@@ -72,7 +116,8 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
                 topLeft: Radius.circular(25),
                 topRight: Radius.circular(25),
               ),
-              gradient: PokedexColors.grassGradient,
+              gradient:
+                  _setGradient(widget.pokemonInfo.types!.first.type!.name!),
             ),
             child: Padding(
               padding: const EdgeInsets.all(12),
@@ -136,8 +181,8 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
         Positioned(
           bottom: 0,
           left: 20,
-          child: Image.asset(
-            'lib/core/assets/svg/buba_test.png',
+          child: Image.network(
+            widget.pokemonInfo.sprites!.other!.officialArtwork!.frontDefault!,
             width: 170,
           ),
         ),
