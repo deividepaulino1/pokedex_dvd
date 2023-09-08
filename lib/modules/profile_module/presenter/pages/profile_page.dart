@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -12,7 +13,6 @@ class _ProfilePageState extends State<ProfilePage> {
   final List<String> _svgAssets = [
     'lib/core/assets/svg/profile/github.svg',
     'lib/core/assets/svg/profile/linkedin.svg',
-    'lib/core/assets/svg/profile/whats.svg',
   ];
 
   @override
@@ -66,13 +66,25 @@ class _ProfilePageState extends State<ProfilePage> {
               color: Colors.indigo.shade900,
               text: 'Follow',
               textColor: Colors.white,
+              onPressed: () async {
+                await launchUrl(
+                  Uri.parse('https://www.instagram.com/deividepaulino'),
+                  mode: LaunchMode.externalApplication,
+                );
+              },
             ),
             const SizedBox(width: 20),
             _buildButton(
-              color: Colors.grey.shade400,
-              text: 'Message',
-              textColor: Colors.indigo.shade900,
-            ),
+                color: Colors.grey.shade400,
+                text: 'Message',
+                textColor: Colors.indigo.shade900,
+                onPressed: () async {
+                  await launchUrl(
+                    Uri.parse(
+                        'https://api.whatsapp.com/send?phone=5515988341654&text=Ol%C3%A1%20Deivide,%20qual%20seu%20pok%C3%A9mon%20preferido?'),
+                    mode: LaunchMode.externalApplication,
+                  );
+                }),
           ],
         ),
         Padding(
@@ -91,7 +103,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Padding(
                 padding: const EdgeInsets.only(left: 5.0),
                 child: Text(
-                  'Mussum Ipsum, cacilds vidis litro abertis. Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo! Paisis, filhis, espiritis santis. A ordem dos tratores não altera o pão duris. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.',
+                  'Dev Flutter com experiência anterior em desenvolvimento  utilizando Angular e Ionic. Testes Unitários e Automátizados com diversas ferramentas, como Cypress, Selenium, Protractor, entre outras. Designer gráfico, UX Designer. Maior caçador de pokemons da minha casa',
                   style: Theme.of(context).textTheme.displayMedium!.copyWith(
                         fontSize: 12,
                       ),
@@ -108,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Padding(
                 padding: const EdgeInsets.only(left: 5.0),
                 child: Text(
-                  'Protótipo realizado para fins de estudos de Sistemas',
+                  'Demo de uma pokedex utilizando Flutter com uma arquitetura simples, sem padrão definido. \nConsumo de api com Dio. Gerenciamento de estado com ASP, Rotas com Modular, Testes ainda não implementados.',
                   style: Theme.of(context).textTheme.displayMedium!.copyWith(
                         fontSize: 12,
                       ),
@@ -120,9 +132,21 @@ class _ProfilePageState extends State<ProfilePage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(
-            3,
+            2,
             (index) => InkWell(
-              onTap: () {},
+              onTap: () async {
+                if (index == 0) {
+                  await launchUrl(
+                    Uri.parse('https://github.com/deividepaulino1'),
+                    mode: LaunchMode.externalApplication,
+                  );
+                } else {
+                  await launchUrl(
+                    Uri.parse('https://www.linkedin.com/in/deividepaulino/'),
+                    mode: LaunchMode.externalApplication,
+                  );
+                }
+              },
               child: SvgPicture.asset(
                 _svgAssets[index],
                 height: 35,
@@ -139,9 +163,10 @@ class _ProfilePageState extends State<ProfilePage> {
     required Color color,
     required String text,
     required Color textColor,
+    required void Function() onPressed,
   }) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onPressed,
       child: Container(
         height: 30,
         width: 100,
