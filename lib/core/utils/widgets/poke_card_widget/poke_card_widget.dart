@@ -39,7 +39,7 @@ class _PokeCardWidgetState extends State<PokeCardWidget>
   void initState() {
     likeController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 3000));
-    if (mainAtom.myFavs.value.contains(widget.name)) {
+    if (mainAtom.likedList.value.contains(widget.pokemonInfo)) {
       likeController.value = 0.5;
     } else {
       likeController.value = 0;
@@ -174,9 +174,9 @@ class _PokeCardWidgetState extends State<PokeCardWidget>
               ),
               InkWell(
                 onTap: () => {
-                  if (mainAtom.myFavs.value.contains(widget.name))
+                  if (mainAtom.likedList.value.contains(widget.pokemonInfo))
                     {
-                      mainAtom.myFavs.value.remove(widget.name),
+                      mainAtom.likedList.value.remove(widget.pokemonInfo),
                       likeController.animateTo(0),
                       CustomSnackbar.show(
                         context: context,
@@ -187,7 +187,7 @@ class _PokeCardWidgetState extends State<PokeCardWidget>
                     }
                   else
                     {
-                      mainAtom.myFavs.value.add(widget.name),
+                      mainAtom.likedList.value.add(widget.pokemonInfo),
                       likeController.animateTo(0.5),
                       CustomSnackbar.show(
                         context: context,

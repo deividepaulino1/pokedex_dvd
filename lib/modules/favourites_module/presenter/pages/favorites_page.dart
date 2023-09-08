@@ -30,22 +30,22 @@ class _FavoritesPageState extends State<FavoritesPage> {
           height: MediaQuery.of(context).size.height * 0.5,
           child: RxBuilder(
             builder: (_) => ListView.builder(
-              itemCount: pokemonAtom.pokemonList.value.length,
+              itemCount: pokemonAtom.likedList.value.length,
               itemBuilder: (context, index) {
                 return PokeCardWidget(
-                    pokemonInfo: pokemonAtom.pokemonList.value[index],
-                    name: pokemonAtom.pokemonList.value[index].name!,
+                    pokemonInfo: pokemonAtom.likedList.value[index],
+                    name: pokemonAtom.likedList.value[index].name!,
                     type1: pokemonAtom
-                        .pokemonList.value[index].types![0].type!.name!,
+                        .likedList.value[index].types![0].type!.name!,
                     type2:
-                        (pokemonAtom.pokemonList.value[index].types!.length > 1)
+                        (pokemonAtom.likedList.value[index].types!.length > 1)
                             ? pokemonAtom
-                                .pokemonList.value[index].types![1].type!.name!
+                                .likedList.value[index].types![1].type!.name!
                             : null,
-                    pokeIndex: pokemonAtom.pokemonList.value[index].id!
+                    pokeIndex: pokemonAtom.likedList.value[index].id!
                         .toString()
                         .padLeft(3, '0'),
-                    imageLink: pokemonAtom.pokemonList.value[index].sprites!
+                    imageLink: pokemonAtom.likedList.value[index].sprites!
                         .other!.officialArtwork!.frontDefault!);
               },
             ),

@@ -5,8 +5,7 @@ import 'package:pokedex_dvd/modules/main_module/presenter/states/main_states.dar
 class MainAtoms {
   final mainState = Atom<MainState>(const MainLoadingState());
   final pokemonList = Atom<List<PokemonInfo>>([]);
-
-  final myFavs = Atom<List<String>>([]);
+  final likedList = Atom<List<PokemonInfo>>([]);
 
 //actions
   final fetchPokemonListAction = Atom.action();
