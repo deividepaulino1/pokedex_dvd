@@ -39,10 +39,11 @@ class CustomSnackbar {
           ),
         ),
         dismissDirection: DismissDirection.horizontal,
-
         margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height - 140,
-          left: 80,
+          bottom: MediaQuery.sizeOf(context).height - 140,
+          left: (MediaQuery.sizeOf(context).width > 600)
+              ? MediaQuery.sizeOf(context).width * 0.5
+              : MediaQuery.sizeOf(context).width * 0.15,
           right: 35,
         ),
       ),

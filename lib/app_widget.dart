@@ -8,6 +8,9 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('${MediaQuery.sizeOf(context).width} width');
+    print('${MediaQuery.sizeOf(context).height} heigth');
+
     (MediaQuery.sizeOf(context).width >= 750)
         ? SystemChrome.setPreferredOrientations([
             DeviceOrientation.portraitUp,

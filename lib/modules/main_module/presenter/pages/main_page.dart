@@ -2,6 +2,7 @@ import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pokedex_dvd/core/utils/widgets/app_bar/pokedex_header_desktop.dart';
 import 'package:pokedex_dvd/core/utils/widgets/app_bar/pokedex_app_bar_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/atoms/bottom_navigation_bar_atom.dart';
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/pokedex_bottom_bar.dart';
@@ -34,18 +35,22 @@ class _MainPageState extends State<MainPage> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PokedexCustomAppBar(),
-      bottomNavigationBar: RxBuilder(
-        builder: (_) => PokedexNavigationBar(
-          currentIndex: currentIndex.value,
-          onTap: (i) {
-            currentIndex.value = i;
-            pageController.animateToPage(i,
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.easeInOut);
-          },
-        ),
-      ),
+      appBar: (MediaQuery.sizeOf(context).width < 600)
+          ? PokedexCustomAppBar()
+          : null,
+      bottomNavigationBar: (MediaQuery.sizeOf(context).width > 600)
+          ? const SizedBox.shrink()
+          : RxBuilder(
+              builder: (_) => PokedexNavigationBar(
+                currentIndex: currentIndex.value,
+                onTap: (i) {
+                  currentIndex.value = i;
+                  pageController.animateToPage(i,
+                      duration: const Duration(milliseconds: 400),
+                      curve: Curves.easeInOut);
+                },
+              ),
+            ),
       body: switch (state) {
         MainErrorState _ => _buildFail(state.message),
         MainLoadingState _ => _buildLoading(),
@@ -79,13 +84,23 @@ class _MainPageState extends State<MainPage> {
   }
 
   Widget _buildSucess() {
-    return PageView(
-      controller: pageController,
-      physics: const NeverScrollableScrollPhysics(),
-      children: const [
-        HomePage(),
-        FavoritesPage(),
-        ProfilePage(),
+    return Column(
+      children: [
+        if (MediaQuery.sizeOf(context).width > 600)
+          PokedexHeaderDesktop(
+            pageController: pageController,
+          ),
+        Expanded(
+          child: PageView(
+            controller: pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: const [
+              HomePage(),
+              FavoritesPage(),
+              ProfilePage(),
+            ],
+          ),
+        ),
       ],
     );
   }

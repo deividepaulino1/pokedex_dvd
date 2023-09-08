@@ -27,27 +27,33 @@ class _FavoritesPageState extends State<FavoritesPage> {
           ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.5,
-          child: RxBuilder(
-            builder: (_) => ListView.builder(
-              itemCount: pokemonAtom.likedList.value.length,
-              itemBuilder: (context, index) {
-                return PokeCardWidget(
-                    pokemonInfo: pokemonAtom.likedList.value[index],
-                    name: pokemonAtom.likedList.value[index].name!,
-                    type1: pokemonAtom
-                        .likedList.value[index].types![0].type!.name!,
-                    type2:
-                        (pokemonAtom.likedList.value[index].types!.length > 1)
-                            ? pokemonAtom
-                                .likedList.value[index].types![1].type!.name!
-                            : null,
-                    pokeIndex: pokemonAtom.likedList.value[index].id!
-                        .toString()
-                        .padLeft(3, '0'),
-                    imageLink: pokemonAtom.likedList.value[index].sprites!
-                        .other!.officialArtwork!.frontDefault!);
-              },
+          height: (MediaQuery.sizeOf(context).width > 600)
+              ? MediaQuery.of(context).size.height * 0.7
+              : MediaQuery.of(context).size.height * 0.5,
+          child: SingleChildScrollView(
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 10,
+              runSpacing: 10,
+              children: pokemonAtom.likedList.value.map((pokemonInfo) {
+                return ConstrainedBox(
+                  constraints: BoxConstraints(
+                      maxWidth:
+                          (MediaQuery.sizeOf(context).width < 720) ? 600 : 360),
+                  child: PokeCardWidget(
+                    pokemonInfo: pokemonInfo,
+                    name: pokemonInfo.name!,
+                    type1: pokemonInfo.types![0].type!.name!,
+                    type2: (pokemonInfo.types!.length > 1)
+                        ? pokemonInfo.types![1].type!.name!
+                        : null,
+                    pokeIndex: pokemonInfo.id!.toString().padLeft(3, '0'),
+                    imageLink: pokemonInfo
+                        .sprites!.other!.officialArtwork!.frontDefault!,
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ),
