@@ -141,7 +141,7 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
                           CustomSnackbar.show(
                             context: context,
                             message:
-                                '${widget.pokemonInfo.name![0].toUpperCase() + widget.pokemonInfo.name!.substring(1)} deixou de ser queridinho :(',
+                                '${widget.pokemonInfo.name![0].toUpperCase() + widget.pokemonInfo.name!.substring(1)} não é amado :(',
                             icon: Icons.heart_broken,
                           ),
                         }

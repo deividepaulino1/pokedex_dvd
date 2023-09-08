@@ -41,7 +41,7 @@ class CustomSnackbar {
         dismissDirection: DismissDirection.horizontal,
 
         margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height - 130,
+          bottom: MediaQuery.of(context).size.height - 140,
           left: 80,
           right: 35,
         ),

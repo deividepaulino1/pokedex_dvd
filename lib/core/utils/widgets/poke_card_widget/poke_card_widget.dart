@@ -181,7 +181,7 @@ class _PokeCardWidgetState extends State<PokeCardWidget>
                       CustomSnackbar.show(
                         context: context,
                         message:
-                            '${widget.name[0].toUpperCase() + widget.name.substring(1)} deixou de ser queridinho :(',
+                            '${widget.name[0].toUpperCase() + widget.name.substring(1)} não é amado :(',
                         icon: Icons.heart_broken,
                       ),
                     }
