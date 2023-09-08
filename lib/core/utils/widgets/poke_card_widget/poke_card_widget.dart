@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:pokedex_dvd/core/theme/colors/colors.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/poke_modal_info.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_type_widget/poke_type_widget.dart';
+import 'package:pokedex_dvd/modules/main_module/models/pokemon_model.dart';
 
 class PokeCardWidget extends StatefulWidget {
   final String imageLink;
@@ -10,6 +11,7 @@ class PokeCardWidget extends StatefulWidget {
   final String pokeIndex;
   final String type1;
   final String? type2;
+  final PokemonInfo pokemonInfo;
   const PokeCardWidget({
     super.key,
     required this.imageLink,
@@ -17,6 +19,7 @@ class PokeCardWidget extends StatefulWidget {
     required this.pokeIndex,
     required this.type1,
     this.type2,
+    required this.pokemonInfo,
   });
 
   @override
@@ -89,7 +92,9 @@ class _PokeCardWidgetState extends State<PokeCardWidget>
           context: context,
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
-          builder: (context) => const PokeModalInfoWidget(),
+          builder: (context) => PokeModalInfoWidget(
+            pokemonInfo: widget.pokemonInfo,
+          ),
         ),
       },
       child: Container(

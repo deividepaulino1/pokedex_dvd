@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_type_widget/poke_type_widget.dart';
+import 'package:pokedex_dvd/modules/main_module/models/pokemon_model.dart';
 
 class AboutPokemonWidget extends StatefulWidget {
-  const AboutPokemonWidget({super.key});
+  final PokemonInfo pokemonInfo;
+  const AboutPokemonWidget({super.key, required this.pokemonInfo});
 
   @override
   State<AboutPokemonWidget> createState() => _AboutPokemonWidgetState();
@@ -15,10 +17,11 @@ class _AboutPokemonWidgetState extends State<AboutPokemonWidget> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(30),
+          Padding(
+            padding: const EdgeInsets.all(30),
             child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nisl nisl lacinia nunc, quis aliquet'),
+              widget.pokemonInfo.abilities![0].ability!.name!,
+            ),
           ),
           //table with 3 rows and 3 columns
 
@@ -47,8 +50,14 @@ class _AboutPokemonWidgetState extends State<AboutPokemonWidget> {
               ),
               TableRow(
                 children: [
-                  buildTableCell(text: 'Lizard'),
-                  buildTableCell(text: 'Blaze'),
+                  buildTableCell(
+                    text:
+                        //categorie
+                        widget.pokemonInfo.types![0].type!.name!,
+                  ),
+                  buildTableCell(
+                    text: widget.pokemonInfo.abilities![0].ability!.name!,
+                  ),
                   buildTableCell(text: ''),
                 ],
               ),
@@ -61,8 +70,14 @@ class _AboutPokemonWidgetState extends State<AboutPokemonWidget> {
               ),
               TableRow(
                 children: [
-                  buildTableCell(text: 'grass', isWeakenes: true),
-                  buildTableCell(text: 'poison', isWeakenes: true),
+                  buildTableCell(
+                      text: widget.pokemonInfo.types![0].type!.name!,
+                      isWeakenes: true),
+                  (widget.pokemonInfo.types!.length > 1)
+                      ? buildTableCell(
+                          text: widget.pokemonInfo.types![1].type!.name!,
+                          isWeakenes: true)
+                      : buildTableCell(text: ''),
                   buildTableCell(text: ''),
                 ],
               ),

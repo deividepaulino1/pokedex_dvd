@@ -28,7 +28,7 @@ class MainReducer extends Reducer {
         final response = await pokemonService.fetchPokemonGenInfo('$i');
         pokemonAtom.pokemonList.value.add(response);
       } catch (e) {
-        d.log('Pokemon sem dados: $e');
+        d.log('Ops... um pokémon escapou!');
       }
     }
 

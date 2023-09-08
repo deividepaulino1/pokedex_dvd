@@ -10,9 +10,11 @@ import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/evolution/pokemon
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/moves/pokemon_moves_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_modal_info/stats/pokemon_stats_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_type_widget/poke_type_widget.dart';
+import 'package:pokedex_dvd/modules/main_module/models/pokemon_model.dart';
 
 class PokeModalInfoWidget extends StatefulWidget {
-  const PokeModalInfoWidget({super.key});
+  final PokemonInfo pokemonInfo;
+  const PokeModalInfoWidget({super.key, required this.pokemonInfo});
 
   @override
   State<PokeModalInfoWidget> createState() => _PokeModalInfoWidgetState();
@@ -89,13 +91,16 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
                         ..forward();
                     },
                   ),
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('#001'),
                       Text(
-                        'Bulbasaur',
-                        style: TextStyle(
+                          '#${widget.pokemonInfo.id.toString().padLeft(3, '0')}',
+                          style: Theme.of(context).textTheme.bodyMedium),
+                      Text(
+                        widget.pokemonInfo.name![0].toUpperCase() +
+                            widget.pokemonInfo.name!.substring(1),
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -103,15 +108,16 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
                       ),
                     ],
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       PokeTypeWidget(
-                        type: 'grass',
+                        type: widget.pokemonInfo.types![0].type!.name!,
                       ),
-                      PokeTypeWidget(
-                        type: 'poison',
-                      ),
+                      if (widget.pokemonInfo.types!.length > 1)
+                        PokeTypeWidget(
+                          type: widget.pokemonInfo.types![1].type!.name!,
+                        ),
                     ],
                   ),
                 ],
@@ -170,11 +176,15 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
         children: [
           Container(
             color: Colors.white,
-            child: const AboutPokemonWidget(),
+            child: AboutPokemonWidget(
+              pokemonInfo: widget.pokemonInfo,
+            ),
           ),
           Container(
             color: Colors.white,
-            child: const PokemonStatsWidget(),
+            child: PokemonStatsWidget(
+              pokemonInfo: widget.pokemonInfo,
+            ),
           ),
           Container(
             color: Colors.white,

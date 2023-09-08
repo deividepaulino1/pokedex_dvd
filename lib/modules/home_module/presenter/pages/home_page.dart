@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
               itemCount: pokemonAtom.pokemonList.value.length,
               itemBuilder: (context, index) {
                 return PokeCardWidget(
+                    pokemonInfo: pokemonAtom.pokemonList.value[index],
                     name: pokemonAtom.pokemonList.value[index].name!,
                     type1: pokemonAtom
                         .pokemonList.value[index].types![0].type!.name!,

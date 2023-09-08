@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:pokedex_dvd/modules/main_module/models/pokemon_model.dart';
 
 class PokemonStatsWidget extends StatefulWidget {
-  const PokemonStatsWidget({super.key});
+  final PokemonInfo pokemonInfo;
+
+  const PokemonStatsWidget({super.key, required this.pokemonInfo});
 
   @override
   State<PokemonStatsWidget> createState() => _PokemonStatsWidgetState();
@@ -11,6 +14,15 @@ class PokemonStatsWidget extends StatefulWidget {
 class _PokemonStatsWidgetState extends State<PokemonStatsWidget> {
   @override
   Widget build(BuildContext context) {
+    getTotalStats() {
+      int soma = 0;
+      for (var i = 0; i < widget.pokemonInfo.stats!.length; i++) {
+        soma += widget.pokemonInfo.stats![i].baseStat!;
+      }
+      final total = 100 * soma / 600;
+      return total;
+    }
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -19,31 +31,31 @@ class _PokemonStatsWidgetState extends State<PokemonStatsWidget> {
           ),
           buildTableCell(
             text: 'HP',
-            value: 35,
+            value: widget.pokemonInfo.stats![0].baseStat!,
           ),
           buildTableCell(
             text: 'Attack',
-            value: 55,
+            value: widget.pokemonInfo.stats![1].baseStat!,
           ),
           buildTableCell(
             text: 'Defense',
-            value: 40,
+            value: widget.pokemonInfo.stats![2].baseStat!,
           ),
           buildTableCell(
             text: 'Sp. Atk',
-            value: 50,
+            value: widget.pokemonInfo.stats![3].baseStat!,
           ),
           buildTableCell(
             text: 'Sp. Def',
-            value: 50,
+            value: widget.pokemonInfo.stats![4].baseStat!,
           ),
           buildTableCell(
             text: 'Speed',
-            value: 90,
+            value: widget.pokemonInfo.stats![5].baseStat!,
           ),
           buildTableCell(
             text: 'Total',
-            value: 90,
+            value: getTotalStats().toInt(),
             isTotality: true,
           ),
         ],
