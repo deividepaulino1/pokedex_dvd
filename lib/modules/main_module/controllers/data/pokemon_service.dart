@@ -29,6 +29,7 @@ class PokemonService {
       final response = await _dio.get('${Api.urlbase}pokemon/$index/');
       if (response.statusCode == 200) {
         final pokemon = PokemonInfo.fromJson(response.data);
+        //add to pokemonInfo the evolution from fetchPokemonEvolution
         return pokemon;
       } else {
         throw Exception('Erro na busca');
@@ -37,4 +38,28 @@ class PokemonService {
       throw Exception('Exceção: $e');
     }
   }
+
+  /* Desativei este método pq o [endpoint] da api esta retornando o index 
+    incorreto do pokemón, de forma que por exemplo o Charmander esta retornando
+    evolução na sequencia como metaphod, mas na verdade é o charmeleon.
+    A documentação da api esta errada, e o endpoint não retorna o index correto
+    fiz diversos testes e não obtive sucesso usando essa api por isso desativei
+    Contornei colocando ele no finder e notificando com erro ao carregar os dados
+    do pokemon
+    */
+
+  //get evolve chain
+  // Future<String> fetchPokemonEvolutionChain(String index) async {
+  //   try {
+  //     final response = await _dio.get('${Api.urlbase}evolution-chain/$index/');
+  //     if (response.statusCode == 200) {
+  //       final pokemon = EvolutionChain.fromJson(response.data);
+  //       return pokemon.evolvesTo[0].species.name;
+  //     } else {
+  //       throw Exception('Erro na busca');
+  //     }
+  //   } catch (e) {
+  //     throw Exception('Exceção: $e');
+  //   }
+  // }
 }

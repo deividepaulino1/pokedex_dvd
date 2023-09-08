@@ -32,25 +32,37 @@ class _PokemonEvolutionWidgetState extends State<PokemonEvolutionWidget> {
                         border: Border.all(color: Colors.green, width: 1),
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      child: const CircleAvatar(
-                        radius: 50,
-                        backgroundColor: Colors.transparent,
-                        backgroundImage: AssetImage(
-                          'lib/core/assets/svg/buba_test.png',
-                        ),
-                      ),
+                      child: (index == 0)
+                          ? CircleAvatar(
+                              radius: 50,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: NetworkImage(widget
+                                  .pokemonInfo
+                                  .sprites!
+                                  .other!
+                                  .officialArtwork!
+                                  .frontDefault!),
+                            )
+                          : const CircleAvatar(
+                              radius: 50,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage(
+                                  'lib/core/assets/images/find_pokemon.png'),
+                            ),
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      // 'Bubassaur #$index',
-                      widget.pokemonInfo.species!.url!,
+                      (index == 0) ? widget.pokemonInfo.name! : 'Desconhecido',
                       style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const PokeTypeWidget(type: 'grass'),
+                    (index == 0)
+                        ? PokeTypeWidget(
+                            type: widget.pokemonInfo.types!.first.type!.name!)
+                        : const SizedBox.shrink(),
                   ],
                 ),
               ),
