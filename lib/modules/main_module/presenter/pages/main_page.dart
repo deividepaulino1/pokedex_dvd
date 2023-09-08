@@ -1,6 +1,7 @@
 import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pokedex_dvd/core/utils/widgets/app_bar/pokedex_app_bar_widget.dart';
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/atoms/bottom_navigation_bar_atom.dart';
 import 'package:pokedex_dvd/core/utils/widgets/bottom_navigation_bar/pokedex_bottom_bar.dart';
@@ -68,8 +69,12 @@ class _MainPageState extends State<MainPage> {
   }
 
   Widget _buildLoading() {
-    return const Center(
-      child: CircularProgressIndicator(),
+    return Center(
+      child: Lottie.asset(
+        'lib/core/assets/animations/pokeball_loading.json',
+        width: 50,
+        height: 50,
+      ),
     );
   }
 
