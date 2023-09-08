@@ -188,11 +188,15 @@ class _PokeModalInfoWidgetState extends State<PokeModalInfoWidget>
           ),
           Container(
             color: Colors.white,
-            child: const PokemonEvolutionWidget(),
+            child: PokemonEvolutionWidget(
+              pokemonInfo: widget.pokemonInfo,
+            ),
           ),
           Container(
             color: Colors.white,
-            child: const PokemonMovesWidget(),
+            child: PokemonMovesWidget(
+              pokemonInfo: widget.pokemonInfo,
+            ),
           ),
         ],
       ),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_dvd/core/utils/widgets/poke_type_widget/poke_type_widget.dart';
+import 'package:pokedex_dvd/modules/main_module/models/pokemon_model.dart';
 
 class PokemonEvolutionWidget extends StatefulWidget {
-  const PokemonEvolutionWidget({super.key});
+  final PokemonInfo pokemonInfo;
+
+  const PokemonEvolutionWidget({super.key, required this.pokemonInfo});
 
   @override
   State<PokemonEvolutionWidget> createState() => _PokemonEvolutionWidgetState();
@@ -39,7 +42,8 @@ class _PokemonEvolutionWidgetState extends State<PokemonEvolutionWidget> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'Bubassaur #$index',
+                      // 'Bubassaur #$index',
+                      widget.pokemonInfo.species!.url!,
                       style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,

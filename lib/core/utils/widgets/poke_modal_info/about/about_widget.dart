@@ -36,8 +36,12 @@ class _AboutPokemonWidgetState extends State<AboutPokemonWidget> {
               ),
               TableRow(
                 children: [
-                  buildTableCell(text: ' 0,6m', isHeigth: true),
-                  buildTableCell(text: ' 8.5kg', isWeigth: true),
+                  buildTableCell(
+                      text: ' ${widget.pokemonInfo.height! / 10}m',
+                      isHeigth: true),
+                  buildTableCell(
+                      text: ' ${widget.pokemonInfo.weight! / 10}kg',
+                      isWeigth: true),
                   buildTableCell(text: ' Male', isGender: true),
                 ],
               ),
