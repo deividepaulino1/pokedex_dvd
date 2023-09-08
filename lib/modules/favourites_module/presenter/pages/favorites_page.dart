@@ -28,7 +28,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
         ),
         SizedBox(
           height: (MediaQuery.sizeOf(context).width > 600)
-              ? MediaQuery.of(context).size.height * 0.7
+              ? MediaQuery.of(context).size.height * 0.6
               : MediaQuery.of(context).size.height * 0.5,
           child: SingleChildScrollView(
             child: Wrap(
